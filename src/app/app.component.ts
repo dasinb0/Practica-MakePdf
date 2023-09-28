@@ -49,15 +49,17 @@ export class AppComponent implements OnInit, AfterViewInit {
       // Agregar el contenido al iframe
       iframe.contentDocument.body.appendChild(element);
   
-      // Utiliza html2canvas para capturar el contenido HTML como una imagen
-      html2canvas(iframe.contentDocument.body).then((canvas) => {
-        const dataUrl = canvas.toDataURL(); // Obtiene la imagen en formato base64
+      // Utiliza html2canvas para capturar el contenido HTML como una imagen con ajustes personalizados
+      html2canvas(iframe.contentDocument.body, {
+        scale: 2, 
+       }).then((canvas) => {
+        const dataUrl = canvas.toDataURL(); 
   
         const pdfDefinition: any = {
           content: [
             {
               image: dataUrl,
-              width: 500, // Ajusta el ancho según tus necesidades
+              width: 500, 
             },
           ],
         };
@@ -79,9 +81,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     // Establecer la fuente del iframe
     iframe.src = 'about:blank';
   }
- }  
-
-
+}
 
 
 

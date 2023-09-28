@@ -1,0 +1,69 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes neon {
+    0% {
+        text-shadow: 0 0 5px #f00;
+    }
+    20% {
+        text-shadow: 0 0 20px #f00;
+    }
+    40% {
+        text-shadow: 0 0 5px #f00;
+    }
+    60% {
+        text-shadow: 0 0 20px #f00;
+    }
+    80% {
+        text-shadow: 0 0 5px #f00;
+    }
+    100% {
+        text-shadow: 0 0 10px #f00;
+    }
+}
+
+h1, p, button, #pdfContent {
+    font-size: 2rem;
+    margin-top: 20px;
+    animation: neon 1s infinite; 
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #f00;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    box-shadow: 0 0 10px 3px #f00; 
+}
+
+button:hover {
+    background-color: #fff;
+    color: #f00;
+    border-color: #f00; 
+    box-shadow: 0 0 20px 5px #f00; 
+}
+
+#pdfContent {
+    background-color: #222;
+    padding: 20px;
+    border: 2px solid #fff;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+
+

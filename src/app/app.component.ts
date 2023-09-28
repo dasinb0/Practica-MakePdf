@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import html2canvas from 'html2canvas';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -10,54 +11,78 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
+  ngAfterViewInit() {
+    // Llama a createPdf después de que la vista se haya inicializado
+    this.createPdf();
+  }
+
   async createPdf() {
     try {
-      // Realizar una solicitud GET a la API para obtener los datos
-      const data: any = await this.http.get('https://jsonplaceholder.typicode.com/posts/1').toPromise();
+      // Realiza una solicitud GET para obtener el contenido HTML desde "assets/turno.html"
+      const htmlContent = await this.http.get('assets/turno.html', { responseType: 'text' }).toPromise();
 
-      // Llamada a la función para generar el PDF con los datos obtenidos
-      this.generatePDF(data);
+      // Llamada a la función para generar el PDF con el contenido HTML
+      this.generatePDF(htmlContent);
     } catch (error) {
-      console.error('Error al obtener los datos de la API', error);
+      console.error('Error al obtener el contenido HTML', error);
     }
   }
 
-  generatePDF(data: any) {
-    const pdfDefinition: any = {
-      content: [
-        { text: 'Título del PDF', style: 'header' },
-        { text: 'Datos de la API:', style: 'subheader' },
-        { text: `ID: ${data.id}`, style: 'body' },
-        { text: `Título: ${data.title}`, style: 'body' },
-        { text: `Cuerpo: ${data.body}`, style: 'body' },
-      ],
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-          alignment: 'center',
-          margin: [0, 0, 0, 10],
-        },
-        subheader: {
-          fontSize: 16,
-          bold: true,
-          margin: [0, 10, 0, 5],
-        },
-        body: {
-          margin: [0, 0, 0, 5],
-        },
-      },
+  generatePDF(htmlContent: string) {
+    // Obtén el elemento que contiene el HTML
+    const element = document.createElement('div');
+    element.innerHTML = htmlContent;
+  
+    // Crear un elemento iframe y agregar el contenido HTML
+    const iframe = document.createElement('iframe');
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    document.body.appendChild(iframe);
+  
+    // Esperar a que el iframe se cargue completamente
+    iframe.onload = () => {
+      // Agregar el contenido al iframe
+      iframe.contentDocument.body.appendChild(element);
+  
+      // Utiliza html2canvas para capturar el contenido HTML como una imagen
+      html2canvas(iframe.contentDocument.body).then((canvas) => {
+        const dataUrl = canvas.toDataURL(); // Obtiene la imagen en formato base64
+  
+        const pdfDefinition: any = {
+          content: [
+            {
+              image: dataUrl,
+              width: 500, // Ajusta el ancho según tus necesidades
+            },
+          ],
+        };
+  
+        // Crear y abrir el PDF
+        const pdf = pdfMake.createPdf(pdfDefinition);
+  
+        // Aplicar el estilo display: none; después de tomar la captura
+        iframe.style.display = 'none';
+  
+        // Abre el PDF después de ocultar el iframe
+        pdf.open();
+  
+        // Eliminar el iframe después de su uso
+        document.body.removeChild(iframe);
+      });
     };
-
-    // Crear y abrir el PDF
-    const pdf = pdfMake.createPdf(pdfDefinition);
-    pdf.open();
+  
+    // Establecer la fuente del iframe
+    iframe.src = 'about:blank';
   }
-}
+ }  
+
+
+
+
 
 

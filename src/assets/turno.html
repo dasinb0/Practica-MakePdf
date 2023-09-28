@@ -1,0 +1,318 @@
+<!-- HTML DEL COMPROBANTE DE TURNO -->
+
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>NUEVO TURNO</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+<style type="text/css">
+    html,
+    body {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+        font-family: 'Roboto', sans-serif;
+        color: #33353A;
+
+    }
+
+    * {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+
+    div[style*="margin: 16px 0"] {
+        margin: 0 !important;
+    }
+
+
+
+    table,
+    td {
+        mso-table-lspace: 0pt !important;
+        mso-table-rspace: 0pt !important;
+    }
+
+    table {
+        border-spacing: 0 !important;
+        border-collapse: collapse !important;
+        table-layout: fixed !important;
+        margin: 0 auto !important;
+
+    }
+
+    table table table {
+        table-layout: auto;
+    }
+
+    img {
+        -ms-interpolation-mode: bicubic;
+    }
+
+    .mobile-footer a,
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: underline !important;
+    }
+
+    .int-btn {
+        border: #33353A 1px solid;
+        border-radius: 15px;
+    }
+
+    .ctn-detalleturno {
+        border: #33353A 1px solid;
+        border-radius: 15px;
+    }
+
+    .ctn-detalleturno ul {
+        padding: 15px 30px;
+        margin: 0;
+    }
+
+    .ctn-detalleturno ul li {
+        list-style: none;
+        text-align: left;
+        line-height: 2em;
+    }
+
+    .h1.cabecera-titulo {
+        text-align: center;
+        padding: 25px;
+        color: #ffffff;
+        background-color: #33353A;
+        font-weight: 500;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    .reque.foot-importante {
+        text-align: center;
+        padding: 12px;
+        mso-height-rule: exactly;
+        line-height: 18px;
+        background-color: rgb(199, 8, 8);
+        font-weight: 400;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .portal{
+        color: rgb(199, 8, 8);
+        font-weight: 600;
+        margin: 0 3px;
+    }
+
+</style>
+
+<style>
+    .subhead,
+    .h1 {
+        font-family: 'Roboto', sans-serif;
+        margin-left: -50px;
+    }
+
+    .subhead {
+        padding: 0 0 0 3px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .h1 {
+        padding: 5px 0 0 0;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .lavel,
+    .data,
+    .reque {
+        font-size: 1em;
+        padding-top: 10px;
+    }
+
+    .lavel {
+        font-style: normal;
+        text-align: left;
+    }
+
+    .data {
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .reque {
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .code {
+        font-size: 24px;
+    }
+
+    @media screen and (max-width: 600px) {
+
+        body {
+            background-color: white;
+            text-align: left;
+        }
+
+        .email-container {
+            width: 100% !important;
+            margin: auto !important;
+        }
+
+        .lavel,
+        .data,
+        .reque,
+        .code {
+            text-align: left;
+        }
+
+        .reque {
+            padding: 20px 20px 0 20px;
+            font-weight: 400;
+        }
+
+        .btn-crear {
+            width: 60%;
+        }
+
+        .int-btn {
+            font-size: 14px;
+            color: aqua;
+        }
+
+        .porfa {
+            text-align: center;
+        }
+
+        .ctn-detalleturno {
+            width: 100%;
+        }
+
+        .h1.cabecera-titulo {
+
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+
+        .reque.foot-importante {
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+    }
+</style>
+
+</head>
+
+<body width="100%" style="margin: 0;">
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="600" class="email-container">
+    <tr>
+        <td style="padding: 20px 0; text-align: center; width:100%">
+            <img src="data:image/png;base64,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"
+                alt="Logo Hospital" border="0" style="margin-left: 20px;">
+        </td>
+    </tr>
+</table>
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="650"
+    class="email-container" style="background: none;">
+    <tr>
+        <td class="h1 cabecera-titulo">Certificado de Turno</td>
+    </tr>
+    <tr style="border: 1px solid #f1f0f0;">
+        <td class="texto" valign="middle"
+            style="text-align: center; padding: 20px; background-color: white;font-family: 'Roboto', sans-serif;  mso-height-rule: exactly; line-height: 20px; ">
+            <table align="center" border="0px" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <div class="ctn-proxturno2">
+                            <div class="ctn-detalleturno">
+                                <ul>
+                                    <li style="font-size: 1.3em;"><b> Detalle del turno</b></li>
+                                    <li><b> Hora: </b> 15:00 hs </li>
+                                    <li><b> Fecha: </b> 28/09/2023 </li>
+                                    <li><b> Nº de turno: </b> 78854</li>
+                                    <li><b> Médico/Agenda: </b> Juan Perez</li>
+                                    <li><b> Servicio/Especialidad:</b>Traumatologia / Especialista Rodilla</li>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <li style="text-align: center;">
+                                        <!-- <img src="http://10.10.30.114:3000/api/tools/barGenerator/?bcid=code39&text={{appointment.id}}"> -->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table align="left">
+                <tr>
+                    <td class="lavel" style="color: rgb(199, 8, 8); font-weight: 600; padding-top: 20px; padding-bottom: 20px;">{{textIfIsPami}}</td>
+                </tr>
+                <tr>
+                    <td class="lavel" style="padding-top: 10px;">Para modificaciones o cancelaciones ingrese al <a href="https://portal.hospitaldeclinicas.uba.ar/#/login" target="_blank" class="portal">PORTAL WEB</a> y gestione los cambios que necesite.</td>
+                </tr>
+                <tr>
+                    <td class="lavel" style="color: rgb(199, 8, 8); font-weight: 600; padding-top: 20px; padding-bottom: 20px;">
+                        <img src="assets\gato.svg" width="20px" alt="Ícono exclamation" style=" margin-right:5px"> 
+                        LOS TURNOS PUEDEN SER CANCELADOS HASTA LAS 00:00hs. DEL DÍA ANTERIOR A SU CITA.</td>
+                </tr>
+                <tr>
+                    <td class="lavel" style="padding-top: 10px; padding-bottom: 20px;">Ante cualquier consulta no dude en comunicarse
+                        con nuestra <b>Central de Turnos</b>.</td>
+                </tr>                        
+                <tr>
+                    <td class="lavel" style="padding-bottom: 10px;">
+                        <img src="assets\mariposa.svg" alt="Ícono reloj" width="18px" style="margin-right: 8px;"> 
+                        <b>Horario de atención:</b> Lunes a viernes de 09 a 16 hs.</td>
+                </tr>
+                <tr>
+                    <td class="lavel" style="padding-bottom: 20px;"> 
+                        <img src="assets\plantas.svg" alt="Ícono teléfono" width="18px" style="margin-right: 8px;">
+                         <b>Central de turnos:</b> 011 - 5950 - 8528/29.</td>
+                </tr>
+            </table> 
+             <hr> 
+             <table align="left">
+                <tr>
+                    <td class="lavel" style="padding-top: 20px; padding-bottom: 10px;" >
+                    <span><b>QR:</b> Presente este código en el servicio donde será atendido para agilizar su atención.</span></td>  
+                </tr>  
+                <tr>
+                    <td class="lavel" style="padding: 0; height: 100px;" >
+                    <img width="100px" height="100px" style="background-color: black ; "></td>
+                        
+                </tr>    
+            </table> 
+         </td>
+        </td>
+    </tr>
+</table>
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="600" class="email-container">
+    <tr>
+        <td
+            style="padding: 40px 10px; width: 100%;font-size: 12px; font-family: 'Roboto', sans-serif; mso-height-rule: exactly; line-height:18px; text-align: center; color: #888888;">
+            <webversion style="text-decoration:underline; font-weight: bold;">Hospital de Cl&iacute;nicas -
+                Gral. Jos&eacute; de San Mart&iacute;n</webversion>
+            <br><span class="mobile-footer">Av. Córdoba 2351, CABA, Argentina</span>
+            <br><span class="mobile-footer">Teléfono: 011 5950 8000</span>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html> 
